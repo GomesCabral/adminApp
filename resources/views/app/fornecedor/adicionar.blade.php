@@ -14,12 +14,29 @@
             </ul>
         </div>
         <div class="informacao-pagina">
+            <div style="color: green";>
+                {{$msgSuccess}}
+            </div>
+            {{-- {{$msgSuccess}} --}}
             <div style="width: 30%; margin-left: auto; margin-right: auto;">
-                <form action="" method="post">
-                    <input type="text" name="nome" class="borda-preta" placeholder="Nome">
-                    <input type="text" name="site" class="borda-preta" placeholder="Site">
-                    <input type="text" name="uf" class="borda-preta" placeholder="UF">
-                    <input type="text" name="email" class="borda-preta" placeholder="Email">
+                <form action="{{route('app.fornecedor.adicionar')}}" method="post">
+                    @csrf
+                    <input type="text" name="nome" class="borda-preta" placeholder="Nome" value="{{old('nome')}}">
+                    <div style="color: red";>
+                        {{$errors->has('nome') ? $errors->first() : ''}}
+                    </div>
+                    <input type="text" name="site" class="borda-preta" placeholder="Site" value="{{old('site')}}">
+                    <div style="color: red";>
+                        {{$errors->has('site') ? $errors->first() : ''}}
+                    </div>
+                    <input type="text" name="uf" class="borda-preta" placeholder="UF" value="{{old('uf')}}">
+                    <div style="color: red";>
+                        {{$errors->has('uf') ? $errors->first() : ''}}
+                    </div>
+                    <input type="text" name="email" class="borda-preta" placeholder="Email" value="{{old('email')}}">
+                    <div style="color: red";>
+                        {{$errors->has('email') ? $errors->first() : ''}}
+                    </div>
                     <button type="submit" class="borda-preta">Registar</button>
                 </form>
             </div>
